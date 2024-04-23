@@ -1,10 +1,5 @@
 import 'dart:html' as html;
-import 'dart:io';
-import 'dart:typed_data';
-import 'package:archive/archive.dart';
-import 'package:archive/archive_io.dart';
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -83,7 +78,10 @@ class _MyHomePageState extends State<MyHomePage> {
         .showSnackBar(const SnackBar(content: Text("Downloading...")));
     String path =
         'assets/files/my_folder.zip';
-    html.window.open(path, "text");
+    //html.window.open(path, "text");
+    html.AnchorElement anchorElement = html.AnchorElement(href: path);
+    anchorElement.setAttribute("download", "");
+    anchorElement.click();
   }
 
 }
